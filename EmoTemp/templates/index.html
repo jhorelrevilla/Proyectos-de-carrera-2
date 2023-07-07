@@ -6,6 +6,9 @@
         <script src="https://d3js.org/d3.v7.min.js"></script>
         <script>
             const data = JSON.parse('{{jsondata | tojson | safe}}');
+            const feliz =  "{{url_for('static',filename='images/feliz.png')}}";
+            const serio =  "{{url_for('static',filename='images/serio.png')}}";
+            const triste = "{{url_for('static',filename='images/triste.png')}}";
         </script>
         <title>EmoTemp</title>
     </head>

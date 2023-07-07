@@ -59,24 +59,17 @@ const ubication = d3.scaleLinear()
     .domain([0, 3])
     .range(["orange", "green", "purple", "blue"]);
 
-
-//2020-07-24 23:47:08
 const width = document.querySelector("#container_d3").offsetWidth;
 const height = document.querySelector("#container_d3").offsetHeight;
-
-
 var svg = d3.select("#graph");
-//.attr("width", width)
-//.attr("height", height);
-console.log("gaaaa",data.nodes)
 
+/***********************************************************************/
 var simulation = d3.forceSimulation(data.nodes)
     .force("link", d3.forceLink(data.links).id(function (d) { return d.id; }).distance(100))
     .force("charge", d3.forceManyBody().strength(-200))
     .force("center", d3.forceCenter(width / 2, height / 2));
 
-console.log("gaaaa")
-
+/***********************************************************************/
 var link = svg.selectAll(".link")
     .data(data.links)
     .enter()
@@ -90,12 +83,14 @@ var link = svg.selectAll(".link")
         // return "black";
     })
     .style("stroke-width", "8px");
-
+/***********************************************************************/
 var node = svg.selectAll(".node")
     .data(data.nodes)
     .enter()
-    .append("circle")
-    .attr("class", "node")
+    .append("g")
+    .attr("class", "node");
+
+node.append("circle")
     .attr("r", 17)
     .attr("id", (d) => d.id)
     .style("stroke", (d) => {
@@ -108,27 +103,26 @@ var node = svg.selectAll(".node")
     .on("mouseover", handleMouseOver)
     .on("mouseout", handleMouseOut);
 
-// var node = svg.selectAll(".node")
-//     .data(data.nodes)
-//     .enter()
-//     .append("image")
-//     .attr("class", "node")
-//     .attr("xlink:href", d => d.img)
-//     .attr("width", 34)
-//     .attr("height", 34)
-//     // .attr("x", -17)
-//     // .attr("y", -17)
-//     .style("stroke", (d) => {
-//         return escala_color_fecha(Date.parse(d.time));
-//     })
-//     .style("stroke-width", (d) => {
-//         return likes(d.likes);
-//     })
-//     .on("mouseover", handleMouseOver)
-//     .on("mouseout", handleMouseOut);
-
-
-
+node.append("image")
+.attr("x", -11) // Half the width of the image
+.attr("y", -11) // Half the height of the image
+.attr("width", 22) // Width of the image
+.attr("height", 22) // Height of the image
+.attr("xlink:href", (d)=>{
+    console.log("d.emocion",typeof d.emocion)
+    if (d.emocion === 1){
+        return feliz;
+    }
+    if (d.emocion === 0){
+        return serio;
+    }
+    if (d.emocion === -1){
+        return triste;
+    }
+})
+.on("mouseover", handleMouseOver)
+.on("mouseout", handleMouseOut);
+/***********************************************************************/
 simulation.on("tick", function () {
     link
         .attr("x1", function (d) { return d.source.x; })
@@ -137,14 +131,11 @@ simulation.on("tick", function () {
         .attr("y2", function (d) { return d.target.y; });
 
     node
-        .attr("cx", function (d) { return d.x; })
-        .attr("cy", function (d) { return d.y; });
-
-    node
-        .attr("x", function (d) { return d.x; })
-        .attr("y", function (d) { return d.y; });
+        .attr("transform",(d)=>{
+            return 'translate('+d.x+','+d.y+')';
+        })
 });
-
+/***********************************************************************/
 function handleMouseOver(d, i) {
     d3.select(this)
         .transition()
@@ -163,7 +154,6 @@ function handleMouseOver(d, i) {
         .style('background-color', function () {
             return '#ffa600';
         });
-
 }
 
 function handleMouseOut(d, i) {
