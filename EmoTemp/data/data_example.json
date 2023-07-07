@@ -1,0 +1,140 @@
+{
+    "nodes": [
+        {
+            "id": 1,
+            "time": "2021-05-25 23:47:08",
+            "likes": 5,
+            "emocion": 0,
+            "text": "PROTESTORS NEEDED 6PM-10PM DAILY (NOW). 1450 E McKinney DENTON COUNTY JAIL. Covid19 Outbreak. Released Trustee repo… https://t.co/zNAAr9CQZp"
+        },
+        {
+            "id": 2,
+            "time": "2021-04-23 23:47:24",
+            "likes": 10,
+            "emocion": 1,
+            "text": "We need to stop the spreading #Americans are dyingamp; we are still playing politics Put the #military to do the… https://t.co/GpHhIuo0Db"
+        },
+        {
+            "id": 3,
+            "time": "2021-01-22 23:47:58",
+            "likes": 10,
+            "emocion": -1,
+            "text": "Excellent partnership to prevent #COVID19, thank you Sharps Roasthouse 🌟 https://t.co/6Snd9qherl"
+        },
+        {
+            "id": 4,
+            "time": "2021-10-20 23:48:04",
+            "likes": 2,
+            "emocion": 0,
+            "text": "Don't take your eye off the ball. There are still protests going on and more and more people are dying of #COVID19… https://t.co/5ilNnoplAT"
+        },
+        {
+            "id": 5,
+            "time": "2021-10-20 23:48:04",
+            "likes": 6,
+            "emocion": 0,
+            "text": "Always honored to speak w @NicolleDWallace about critical #covid19 health issues. In the midst of ⬆️infections,… https://t.co/KR7THtc1v9"
+        },
+        {
+            "id": 6,
+            "time": "2021-10-20 23:48:04",
+            "likes": 6,
+            "emocion": 0,
+            "text": "Últimas noticias sobre COVID-19! Casos confirmados hoy 1000"
+        },
+        {
+            "id": 7,
+            "time": "2023-10-20 23:48:04",
+            "likes": 8,
+            "emocion": 0,
+            "text": "¡Mantén las medidas de prevención! Usa mascarilla, lávate las manos con frecuencia !"
+        },
+        {
+            "id": 8,
+            "time": "2021-10-20 23:48:04",
+            "likes": 4,
+            "emocion": 0,
+            "text": "Protégete y protege a los demás: usa mascarilla, evita aglomeraciones y sé responsable. #COVID19 #Prevención"
+        },
+        {
+            "id": 9,
+            "time": "2021-10-20 23:48:04",
+            "likes": 3,
+            "emocion": 0,
+            "text": "tweet sobre covid test 9"
+        },
+        {
+            "id": 10,
+            "time": "2021-10-20 23:48:04",
+            "likes": 5,
+            "emocion": 0,
+            "text": "1450 E McKinney DENTON COUNTY JAIL. Covid19"
+        },
+        {
+            "id": 11,
+            "time": "2021-10-20 23:48:04",
+            "likes": 9,
+            "emocion": 0,
+            "text": "There are still protests"
+        },
+        {
+            "id": 12,
+            "time": "2021-10-20 23:48:04",
+            "likes": 1,
+            "emocion": 0,
+            "text": "#covid19 health issues. In the midst of infections"
+        }
+    ],
+    "links": [
+        {
+            "source": 1,
+            "target": 2,
+            "ubication": 1
+        },
+        {
+            "source": 2,
+            "target": 3,
+            "ubication": 1
+        },
+        {
+            "source": 3,
+            "target": 4,
+            "ubication": 2
+        },
+        {
+            "source": 4,
+            "target": 2,
+            "ubication": 2
+        },
+        {
+            "source": 4,
+            "target": 3,
+            "ubication": 2
+        },
+        {
+            "source": 4,
+            "target": 8,
+            "ubication": 2
+        },
+        {
+            "source": 5,
+            "target": 7,
+            "ubication": 2
+        },
+        {
+            "source": 8,
+            "target": 9,
+            "ubication": 2
+        },
+        {
+            "source": 12,
+            "target": 1,
+            "ubication": 2
+        },
+        {
+            "source": 12,
+            "target": 1,
+            "ubication": 2
+        }
+    ]
+}

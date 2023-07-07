@@ -1,0 +1,29 @@
+<!DOCTYPE>
+<html lang="es">
+    <head>
+        <meta name="viewport" content="width=device-width,scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <script>
+            const data = JSON.parse('{{jsondata | tojson | safe}}');
+        </script>
+        <title>EmoTemp</title>
+    </head>
+    <body>
+        <ul>
+            <li>E</li>
+            <li>m</li>
+            <li>o</li>
+            <li>T</li>
+            <li>e</li>
+            <li>m</li>
+            <li>p</li>
+            <li>🙂</li>
+        </ul>
+        <div id="container_d3">
+            <div id="detalles" ></div>
+            <svg id="graph" width="100%" height="100%"></svg>
+        </div>
+    </body>
+    <script src="{{url_for('static',filename='js/main.js')}}"></script>
+</html>
