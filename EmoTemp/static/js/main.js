@@ -160,7 +160,7 @@ function handleMouseOut(d, i) {
     d3.select(this)
         .transition()
         .attr("r", 17)
-        .style("fill", "#69b3a2");
+        .style("fill", "#FFFF00");
 
 
     d3.select("#detalles")
