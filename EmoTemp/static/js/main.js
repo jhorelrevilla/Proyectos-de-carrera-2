@@ -149,7 +149,7 @@ function handleMouseOver(d, i) {
     console.log(this)
     detalles
         .html(
-            '🐦 Tweet: <b>' + data.nodes[this.id - 1].text + '</b> <br>❤️ Likes: <b>'
+            '🐦 Tweet: <b>' + data.nodes[this.id - 1].text + '</b> <br> ❤️ Likes: <b>'+ data.nodes[this.id - 1].likes
         )
         .style('background-color', function () {
             return '#ffa600';
@@ -160,7 +160,7 @@ function handleMouseOut(d, i) {
     d3.select(this)
         .transition()
         .attr("r", 17)
-        .style("fill", "#FFFF00");
+        .style("fill", "#e3e37d");
 
 
     d3.select("#detalles")
