@@ -46,12 +46,12 @@ console.log(data)
 //borde de color por fecha
 const colorRange = ['#ff0000', '#00ff00'];
 const escala_color_fecha = d3.scaleLinear()
-    .domain([new Date("2021-10-20T00:00:00"), new Date("2021-01-21T23:59:59")])
+    .domain([new Date("2020-07-24T00:00:00"), new Date("2020-07-26T23:59:59")])
     .range(colorRange);
 
 //borde grosor depende a #likes
 const likes = d3.scaleLinear()
-    .domain([2, 10])
+    .domain([0, 549524])
     .range([1, 10]);
 
 //color de la arista del lugar de presedencia 
@@ -160,7 +160,7 @@ function handleMouseOut(d, i) {
     d3.select(this)
         .transition()
         .attr("r", 17)
-        .style("fill", "#e3e37d");
+        .style("fill", "#a3a340");
 
 
     d3.select("#detalles")

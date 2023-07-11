@@ -2,7 +2,7 @@ from flask import Flask,render_template
 import json
 
 data=None
-with open('./data/data_example.json') as f:
+with open('./data/data_formato.json') as f:
     data=json.load(f)
 
 app=Flask(__name__)
