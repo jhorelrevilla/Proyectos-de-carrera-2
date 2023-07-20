@@ -61,16 +61,30 @@ const ubication = d3.scaleLinear()
 
 const width = document.querySelector("#container_d3").offsetWidth;
 const height = document.querySelector("#container_d3").offsetHeight;
-var svg = d3.select("#graph");
+var svg = d3
+    .select("#graph")
+    .attr("width","100%")
+    .attr("height","100%")
+    .call(d3.zoom().on("zoom", function () {
+        svg.attr("transform", d3.event.transform)
+    }));
 
+
+var vis=svg.append('g');
+    
+
+const linksLayer=vis.append("g")
+    .attr("id","linksLayer");
+const nodesLayer=vis.append("g")
+    .attr("id","nodesLayer");
 /***********************************************************************/
 var simulation = d3.forceSimulation(data.nodes)
-    .force("link", d3.forceLink(data.links).id(function (d) { return d.id; }).distance(100))
+    .force("link", d3.forceLink(data.links).id(function (d) { return d.id; }).distance(10))
     .force("charge", d3.forceManyBody().strength(-200))
     .force("center", d3.forceCenter(width / 2, height / 2));
 
 /***********************************************************************/
-var link = svg.selectAll(".link")
+var link = linksLayer.selectAll(".link")
     .data(data.links)
     .enter()
     .append("line")
@@ -84,7 +98,7 @@ var link = svg.selectAll(".link")
     })
     .style("stroke-width", "8px");
 /***********************************************************************/
-var node = svg.selectAll(".node")
+var node = nodesLayer.selectAll(".node")
     .data(data.nodes)
     .enter()
     .append("g")
