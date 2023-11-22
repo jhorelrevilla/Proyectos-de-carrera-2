@@ -4,7 +4,7 @@ import json
 data=None
 with open('./data/data_formato.json') as f:
     data=json.load(f)
-
+#print(data)
 app=Flask(__name__)
 
 @app.route('/')
@@ -16,4 +16,4 @@ def index():
 
 
 if __name__=='__main__':
-    app.run(debug=True)
+    app.run(debug=True,port=1000)

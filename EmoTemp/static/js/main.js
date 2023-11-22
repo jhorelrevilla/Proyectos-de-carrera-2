@@ -65,8 +65,8 @@ var svg = d3.select("#graph");
 
 /***********************************************************************/
 var simulation = d3.forceSimulation(data.nodes)
-    .force("link", d3.forceLink(data.links).id(function (d) { return d.id; }).distance(100))
-    .force("charge", d3.forceManyBody().strength(-200))
+    .force("link", d3.forceLink(data.links).id(function (d) { return d.id; }).distance(50))
+    .force("charge", d3.forceManyBody().strength(-20))
     .force("center", d3.forceCenter(width / 2, height / 2));
 
 /***********************************************************************/
@@ -75,6 +75,10 @@ var link = svg.selectAll(".link")
     .enter()
     .append("line")
     .attr("class", "link")
+    .attr("x1", function (d) { return d.source.valor_x * 5000; })
+    .attr("y1", function (d) { return d.source.valor_y * 5000; })
+    .attr("x2", function (d) { return d.target.valor_x * 5000; })
+    .attr("y2", function (d) { return d.target.valor_y * 5000; })
     //forma reducida
     //función para recorrer todos los nodos con el atributo ubication 
     .style("stroke", (d) => {
@@ -93,6 +97,8 @@ var node = svg.selectAll(".node")
 node.append("circle")
     .attr("r", 17)
     .attr("id", (d) => d.id)
+    .attr("cx", function(d) { return ((d.valor_x)*5000); })
+    .attr("cy", function(d) { return ((d.valor_y)*5000); })
     .style("stroke", (d) => {
         return escala_color_fecha(Date.parse(d.time));
     })
@@ -124,16 +130,19 @@ node.append("image")
 .on("mouseout", handleMouseOut);
 /***********************************************************************/
 simulation.on("tick", function () {
-    link
-        .attr("x1", function (d) { return d.source.x; })
-        .attr("y1", function (d) { return d.source.y; })
-        .attr("x2", function (d) { return d.target.x; })
-        .attr("y2", function (d) { return d.target.y; });
-
+/* 
+    link   
+        .attr("x1", function (d) { return d.source.valor_x; })
+        .attr("y1", function (d) { return d.source.valor_y; })
+        .attr("x2", function (d) { return d.target.valor_x; })
+        .attr("y2", function (d) { return d.target.valor_y; });
+*/
+/*
     node
         .attr("transform",(d)=>{
             return 'translate('+d.x+','+d.y+')';
-        })
+        }) 
+        */
 });
 /***********************************************************************/
 function handleMouseOver(d, i) {
