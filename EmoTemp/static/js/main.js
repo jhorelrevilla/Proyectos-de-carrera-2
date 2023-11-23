@@ -43,6 +43,26 @@
 
 console.log(data)
 
+
+let container= d3.select("#graph");
+let width_window=container.node().getBoundingClientRect().width / 2;
+let height_window=container.node().getBoundingClientRect().height / 2;
+
+
+
+console.log("width_window ", width_window);
+console.log("height_window ", height_window);
+
+var xScale = d3.scaleLinear()
+  .domain([-2, 2])  // Dominio de tus datos
+  .range([100, width_window]);  // Rango de tu área de visualización en x
+
+var yScale = d3.scaleLinear()
+  .domain([-2, 2])  // Dominio de tus datos
+  .range([height_window, 100]);  // Rango de tu área de visualización en y
+
+
+
 //borde de color por fecha
 const colorRange = ['#ff0000', '#00ff00'];
 const escala_color_fecha = d3.scaleLinear()
@@ -70,15 +90,17 @@ var simulation = d3.forceSimulation(data.nodes)
     .force("center", d3.forceCenter(width / 2, height / 2));
 
 /***********************************************************************/
+let space_gap=8000;
+
 var link = svg.selectAll(".link")
     .data(data.links)
     .enter()
     .append("line")
     .attr("class", "link")
-    .attr("x1", function (d) { return d.source.valor_x * 5000; })
-    .attr("y1", function (d) { return d.source.valor_y * 5000; })
-    .attr("x2", function (d) { return d.target.valor_x * 5000; })
-    .attr("y2", function (d) { return d.target.valor_y * 5000; })
+    .attr("x1", function (d) { return xScale(d.source.valor_x); })
+    .attr("y1", function (d) { return yScale(d.source.valor_y); })
+    .attr("x2", function (d) { return xScale(d.target.valor_x); })
+    .attr("y2", function (d) { return yScale(d.target.valor_y); })
     //forma reducida
     //función para recorrer todos los nodos con el atributo ubication 
     .style("stroke", (d) => {
@@ -97,8 +119,8 @@ var node = svg.selectAll(".node")
 node.append("circle")
     .attr("r", 17)
     .attr("id", (d) => d.id)
-    .attr("cx", function(d) { return ((d.valor_x)*5000); })
-    .attr("cy", function(d) { return ((d.valor_y)*5000); })
+    .attr("cx", function(d) { return xScale(d.valor_x); })
+    .attr("cy", function(d) { return yScale(d.valor_y); })
     .style("stroke", (d) => {
         return escala_color_fecha(Date.parse(d.time));
     })
@@ -110,8 +132,8 @@ node.append("circle")
     .on("mouseout", handleMouseOut);
 
 node.append("image")
-.attr("x", -11) // Half the width of the image
-.attr("y", -11) // Half the height of the image
+.attr("x", (d)=>{return xScale(d.valor_x) -11;}) // Half the width of the image
+.attr("y", (d)=>{return yScale(d.valor_y) -11;}) // Half the height of the image
 .attr("width", 22) // Width of the image
 .attr("height", 22) // Height of the image
 .attr("xlink:href", (d)=>{
