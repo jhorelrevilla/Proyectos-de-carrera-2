@@ -180,11 +180,9 @@ function handleMouseOver(d, i) {
     console.log(this)
     detalles
         .html(
-            '🐦 Tweet: <b>' + data.nodes[this.id - 1].text + '</b> <br> ❤️ Likes: <b>'+ data.nodes[this.id - 1].likes
+            '🐦 Tweet:</br> <b>' + data.nodes[this.id - 1].text + '</b> <br> ❤️ Likes: </br> <b>'+ data.nodes[this.id - 1].likes
         )
-        .style('background-color', function () {
-            return '#ffa600';
-        });
+        .attr('class','detail-item');
 }
 
 function handleMouseOut(d, i) {
@@ -192,9 +190,4 @@ function handleMouseOut(d, i) {
         .transition()
         .attr("r", 17)
         .style("fill", "#9354eb");
-
-
-    d3.select("#detalles")
-        .style('opacity', 0);
-    //.style('height', 20);
 }
